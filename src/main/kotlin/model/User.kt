@@ -1,19 +1,18 @@
-package model;
+package wtf.shorics.model
 
 import wtf.shorics.annotation.NoArg
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+import jakarta.persistence.Column
+import jakarta.persistence.Entity
+import jakarta.persistence.GeneratedValue
+import jakarta.persistence.GenerationType
+import jakarta.persistence.Id
 
 @Entity(name = "users")
 @NoArg
 data class User(
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
     val id: Long?,
 
-    @Column
+    @Column(nullable = false)
     val email: String?,
 )

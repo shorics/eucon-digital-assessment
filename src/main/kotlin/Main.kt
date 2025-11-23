@@ -1,11 +1,6 @@
 package wtf.shorics
 
-import com.j256.ormlite.dao.Dao
-import com.j256.ormlite.dao.DaoManager
-import com.j256.ormlite.jdbc.JdbcConnectionSource
-import com.j256.ormlite.table.TableUtils
-import model.User
-import wtf.shorics.model.Role
+import jakarta.persistence.Persistence
 import wtf.shorics.util.csv.processRole
 import wtf.shorics.util.csv.processUser
 import wtf.shorics.util.csv.readCsvFile
@@ -20,29 +15,23 @@ fun main() {
 }
 
 fun runMigration() {
-    val connectionString = "jdbc:h2:mem:auth"
-    val username = "sa"
-    val password = ""
     val pathUsers = Paths.get("./users.csv").toAbsolutePath()
     val pathRoles = Paths.get("./roles.csv").toAbsolutePath()
 
-    val connectionSource = JdbcConnectionSource(connectionString, username, password)
-
-    val userDao = DaoManager.createDao<Dao<User, Long>, User>(connectionSource, User::class.java)
-    TableUtils.dropTable(userDao, true)
-    TableUtils.createTable(userDao)
-
-    val roleDao = DaoManager.createDao<Dao<Role, Long>, Role>(connectionSource, Role::class.java)
-    TableUtils.dropTable(roleDao, true)
-    TableUtils.createTable(roleDao)
+    val emf = Persistence.createEntityManagerFactory("main")
+    val em = emf.createEntityManager()
 
     val users = readCsvFile(pathUsers) { line -> processUser(line) }
 
+    em.transaction.begin();
     for (user in users)
-        userDao.create(user)
+        em.merge(user);
+    em.transaction.commit();
 
     val roles = readCsvFile(pathRoles) { line -> processRole(line) }
 
+    em.transaction.begin();
     for (role in roles)
-        roleDao.create(role)
+        em.persist(role);
+    em.transaction.commit();
 }

@@ -1,7 +1,7 @@
 package wtf.shorics.util.csv
 
-import model.User
 import wtf.shorics.model.Role
+import wtf.shorics.model.User
 
 fun processUser(line: Array<String?>?): User {
     val id = line?.get(0)?.toLong()

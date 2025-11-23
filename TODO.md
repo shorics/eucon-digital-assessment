@@ -1,4 +1,6 @@
 # TODO
+- [ ] unique constraint on
+- [ ] check why foreign key constraint
 - [ ] reduce iterations (currently iterated twice)
 - [ ] bulk processing
 - [ ] asynchronous handling of reading and writing to DB
@@ -13,5 +15,4 @@
 - [ ] configuration via e.g. dotenv (paths, connection)
 - [ ] add logging
 - [ ] reduce noisy logging from ORM
-- [ ] check why foreign key constraint could not be completed
 - [ ] DO NOT COMMIT CREDENTIALS
