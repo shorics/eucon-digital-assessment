@@ -1,0 +1,17 @@
+# TODO
+- [ ] reduce iterations (currently iterated twice)
+- [ ] bulk processing
+- [ ] asynchronous handling of reading and writing to DB
+- [ ] transactions
+- [ ] do not queue next scheduled run when current is still running
+- [ ] performance/optimization (drop, truncate, etc.)
+- [ ] error handling
+- [ ] validation of input data
+- [ ] extract DAOs
+- [ ] DI for better project structure
+- [ ] tests
+- [ ] configuration via e.g. dotenv (paths, connection)
+- [ ] add logging
+- [ ] reduce noisy logging from ORM
+- [ ] check why foreign key constraint could not be completed
+- [ ] DO NOT COMMIT CREDENTIALS
