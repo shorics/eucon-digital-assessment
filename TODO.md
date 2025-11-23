@@ -1,15 +1,12 @@
 # TODO
-- [ ] unique constraint on
-- [ ] check why foreign key constraint
 - [ ] reduce iterations (currently iterated twice)
 - [ ] bulk processing
 - [ ] asynchronous handling of reading and writing to DB
-- [ ] transactions
 - [ ] do not queue next scheduled run when current is still running
 - [ ] performance/optimization (drop, truncate, etc.)
 - [ ] error handling
 - [ ] validation of input data
-- [ ] extract DAOs
+- [ ] extract entity manager
 - [ ] DI for better project structure
 - [ ] tests
 - [ ] configuration via e.g. dotenv (paths, connection)
